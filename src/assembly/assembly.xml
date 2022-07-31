@@ -25,7 +25,7 @@
         <fileSet>
             <directory>target</directory>
             <includes>
-                <include>sample-${project.version}.jar</include>
+                <include>sample-docker-${project.version}.jar</include>
             </includes>
             <outputDirectory/>
         </fileSet>
