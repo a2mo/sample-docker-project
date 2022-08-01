@@ -1,9 +1,11 @@
 package ir.a2mo.sample.service;
 
+import ir.a2mo.sample.config.AppConfig;
 import ir.a2mo.sample.controller.GreetingController;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.eq;
@@ -15,13 +17,16 @@ import static org.mockito.Mockito.*;
  */
 public class GreetingServiceUTest {
     private GreetingService greetingService;
+    private AppConfig appConfig;
     public static final String HELLO_WITH_NAME = "Hello AliMohammadi";
     public static final String HELLO_WITHOUT_NAME = "Hello Stranger";
     public static final String AUTHOR = "Ali Alimohammadi";
+    public static final String ARG_AUTHOR = "Ali Ahmadi";
 
     @BeforeEach
     public void setup() {
-        greetingService = new GreetingService();
+        appConfig = mock(AppConfig.class);
+        greetingService = new GreetingService(appConfig);
     }
 
     @Test
@@ -38,8 +43,16 @@ public class GreetingServiceUTest {
     }
 
     @Test
-    public void testGetAuthor_normalServiceCall() {
+    public void testGetAuthor_normalServiceCall_withoutArgs() {
+        when(appConfig.getAuthorName()).thenReturn("Ali Alimohammadi");
         String result = greetingService.getAuthor();
         assertEquals(result, AUTHOR);
+    }
+
+    @Test
+    public void testGetAuthor_normalServiceCall() {
+        when(appConfig.getAuthorName()).thenReturn("Ali Ahmadi");
+        String result = greetingService.getAuthor();
+        assertEquals(result, ARG_AUTHOR);
     }
 }

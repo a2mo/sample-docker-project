@@ -1,5 +1,7 @@
 package ir.a2mo.sample.service;
 
+import ir.a2mo.sample.config.AppConfig;
+import lombok.RequiredArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -9,10 +11,9 @@ import org.springframework.stereotype.Component;
  * @since 7/31/2022
  */
 @Component
+@RequiredArgsConstructor
 public class GreetingService {
-
-    @Value("${author}")
-    private String author;
+    private final AppConfig appConfig;
 
     public String hello(String name) {
         return "Hello " + name;
@@ -23,6 +24,6 @@ public class GreetingService {
     }
 
     public String getAuthor() {
-        return author;
+        return appConfig.getAuthorName();
     }
 }
