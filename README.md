@@ -3,7 +3,7 @@ Docker sample project
 
 # Docker Spring Hello World Sample Project
 
-This is a very basic Spring Hello World application that serves the value of the application property `message` via the web. While simple it's designed to show off some of the spring-cloud-kubernetes functionality.
+This is a very basic Spring Hello World application.
 
 ## Quick Start
 
