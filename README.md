@@ -110,3 +110,31 @@ Hello AliAlimohammadi
 
 $ docker rm -f sample-docker-project
 ```
+
+Example for command-line arg:
+To change the server port, you can pass it as command-line arg after the image name.
+
+```console
+$ docker run --name sample-docker-project -d --rm -p 8080:8687 a2mo/sample-docker-project --port=8687
+6d47dc1ea4833f1a68c6969d4969a74a4d656b9a85600fd089b3cf0ca9716b9d
+
+$ curl localhost:8080/helloworld?name=AliAlimohammadi
+Hello AliAlimohammadi
+
+$ docker rm -f sample-docker-project
+```
+other command-line args:
+--context-path for change context-path
+--author for change author's name
+
+Of course for change server port,you can do it with pass environment variable 'SERVER_PORT'.
+
+```console
+$ docker run --name sample-docker-project -d --rm -e SERVER_PORT=8687 -p 8080:8687 a2mo/sample-docker-project
+6d47dc1ea4833f1a68c6969d4969a74a4d656b9a85600fd089b3cf0ca9716b9d
+
+$ curl localhost:8080/helloworld?name=AliAlimohammadi
+Hello AliAlimohammadi
+
+$ docker rm -f sample-docker-project
+```

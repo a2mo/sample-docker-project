@@ -15,14 +15,6 @@
             <outputDirectory>config</outputDirectory>
         </fileSet>
         <fileSet>
-            <directory>src/bin</directory>
-            <includes>
-                <include>docker-sample.sh</include>
-                <include>docker-sample.bat</include>
-            </includes>
-            <outputDirectory/>
-        </fileSet>
-        <fileSet>
             <directory>target</directory>
             <includes>
                 <include>sample-docker-${project.version}.jar</include>

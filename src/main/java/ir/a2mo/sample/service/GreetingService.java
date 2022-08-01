@@ -1,6 +1,7 @@
 package ir.a2mo.sample.service;
 
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 /**
@@ -9,6 +10,9 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class GreetingService {
+
+    @Value("${author}")
+    private String author;
 
     public String hello(String name) {
         return "Hello " + name;
@@ -19,6 +23,6 @@ public class GreetingService {
     }
 
     public String getAuthor() {
-        return "Ali Alimohammadi";
+        return author;
     }
 }
