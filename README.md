@@ -59,8 +59,6 @@ $ mvn clean install
 
 Then you can run it like so:
 
-> Note: the `MESSAGE` environment variable is not neccesary, but is instead showing that you can change the `message` property to get a different response when accessing the application.
-
 ```console
 $ java -jar target/sample-0.0.1-SNAPSHOT.jar
 
