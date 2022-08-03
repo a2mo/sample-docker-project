@@ -1,6 +1,3 @@
-# sample-docker-project
-Docker sample project
-
 # Docker Spring Hello World Sample Project
 
 This is a very basic Spring Hello World application.
