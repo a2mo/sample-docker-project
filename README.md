@@ -91,7 +91,7 @@ Step 10/10 : ENTRYPOINT ["java","-jar","/app.jar"]
 Removing intermediate container b96dbe5b88c0
  ---> 5405805d6f47
 Successfully built 5405805d6f47
-Successfully tagged paulczar/spring-hello:latest
+Successfully tagged a2mo/sample-docker-project:latest
 ```
 
 Run it:
