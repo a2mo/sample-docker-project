@@ -5,6 +5,8 @@ management:
         include: health, info
   endpoint:
     health:
+      probes:
+        enabled: true
       group:
         liveness:
           include: livenessState, ping, refreshScope
@@ -15,3 +17,10 @@ management:
       enabled: true
     readinessstate:
       enabled: true
+
+server:
+  shutdown: graceful
+
+spring:
+  lifecycle:
+    timeout-per-shutdown-phase: 30

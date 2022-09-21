@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sample-docker-deployment
+  namespace: test
+spec:
+  replicas: 4
+  revisionHistoryLimit: 4
+  selector:
+    matchLabels:
+      app: sample-docker
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+  template:
+    metadata:
+      labels:
+        app: sample-docker
+    spec:
+      terminationGracePeriodSeconds: 30
+      containers:
+      - name: app
+        image: a2mo/sample-docker-project
+        ports:
+        - containerPort: 8080
+        - containerPort: 8081
+        env:
+        - name: TZ
+          value: Asia/Tehran
+        livenessProbe:
+          failureThreshold: 5
+          httpGet:
+            scheme: HTTP
+            port: 8080
+            path: /actuator/health/liveness
+          initialDelaySeconds: 30
+          periodSeconds: 10
+          timeoutSeconds: 5
+          successThreshold: 1
+        readinessProbe:
+          failureThreshold: 5
+          httpGet:
+            scheme: HTTP
+            port: 8080
+            path: /actuator/health/readiness
+          initialDelaySeconds: 5
+          periodSeconds: 10
+          timeoutSeconds: 5
+          successThreshold: 1

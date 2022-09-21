@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: sample-docker-1
+  namespace: test
+  labels:
+    app: sample-docker
+    version: v1
+spec:
+  containers:
+    - name: web
+      image: a2mo/sample-docker-project
+      ports:
+        - name: web
+          containerPort: 80
+          protocol: TCP
